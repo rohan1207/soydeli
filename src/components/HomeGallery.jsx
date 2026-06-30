@@ -1,0 +1,179 @@
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const galleryImages = [
+  { src: "/pro1.png", alt: "Soydeli Masala Tofu", label: "Masala Tofu" },
+  { src: "/pro2.png", alt: "Soydeli Extra Firm Tofu", label: "Extra Firm" },
+  { src: "/pro3.png", alt: "Soydeli Classic Tofu", label: "Classic Plain" },
+  { src: "/product1.png", alt: "Tofu stir-fry bowl", label: "Stir-Fry Ready" },
+  { src: "/product2.png", alt: "Grilled tofu plate", label: "Grill & Serve" },
+  { src: "/about3.png", alt: "Fresh Soydeli pack", label: "Fresh Packed" },
+  { src: "/tofu2.png", alt: "Tofu cubes on board", label: "Chef's Choice" },
+];
+
+const getVisibleRange = (activeIndex, total, count) => {
+  const half = Math.floor(count / 2);
+  return Array.from({ length: count }, (_, i) => {
+    const offset = i - half;
+    return (activeIndex + offset + total) % total;
+  });
+};
+
+const getCardWidth = (visibleCount) => {
+  if (visibleCount === 1) return "min(88vw, 320px)";
+  if (visibleCount === 3) return "clamp(160px, 28vw, 240px)";
+  return "clamp(180px, 18vw, 280px)";
+};
+
+const HomeGallery = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  useEffect(() => {
+    const updateCount = () => {
+      const w = window.innerWidth;
+      if (w < 640) setVisibleCount(1);
+      else if (w < 1024) setVisibleCount(3);
+      else setVisibleCount(5);
+    };
+    updateCount();
+    window.addEventListener("resize", updateCount);
+    return () => window.removeEventListener("resize", updateCount);
+  }, []);
+
+  const goNext = useCallback(() => {
+    setActiveIndex((i) => (i + 1) % galleryImages.length);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    setActiveIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+  }, []);
+
+  const visibleIndices = getVisibleRange(
+    activeIndex,
+    galleryImages.length,
+    visibleCount
+  );
+
+  const getOffset = (imageIndex) => {
+    const centerPos = Math.floor(visibleIndices.length / 2);
+    const itemPos = visibleIndices.indexOf(imageIndex);
+    return itemPos - centerPos;
+  };
+
+  const cardWidth = getCardWidth(visibleCount);
+  const isMobile = visibleCount === 1;
+
+  return (
+    <section className="bg-[#F5F0E8] py-12 sm:py-20 px-3 sm:px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center text-gray-700 text-sm sm:text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-14 px-2"
+        >
+          Soydeli tofu is soft, versatile, and packed with plant protein — perfect
+          for curries, grills, stir-fries, and everyday Indian meals.
+        </motion.p>
+
+        <div
+          className="relative mx-auto px-1 sm:px-0"
+          style={{ perspective: "1400px", perspectiveOrigin: "center center" }}
+        >
+          <div className="flex items-center justify-center min-h-[360px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[520px]">
+            <AnimatePresence mode="popLayout">
+              {visibleIndices.map((imageIndex) => {
+                const image = galleryImages[imageIndex];
+                const offset = getOffset(imageIndex);
+                const isCenter = offset === 0;
+                const absOffset = Math.abs(offset);
+
+                return (
+                  <motion.div
+                    key={imageIndex}
+                    layout
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{
+                      opacity: isMobile ? 1 : 1 - absOffset * 0.1,
+                      rotateY: isMobile ? 0 : offset * 12,
+                      scale: isMobile ? 1 : isCenter ? 1.05 : 0.88 - absOffset * 0.03,
+                      x: isMobile ? 0 : offset * 36,
+                      z: isCenter ? 80 : -absOffset * 55,
+                    }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                    className="flex-shrink-0 mx-2 sm:mx-2.5 md:mx-4"
+                    style={{
+                      transformStyle: "preserve-3d",
+                      zIndex: 10 - absOffset,
+                    }}
+                  >
+                    <div
+                      className={`relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg transition-shadow duration-300 ${
+                        isCenter ? "shadow-2xl ring-2 ring-[#8CC63F]/35" : ""
+                      }`}
+                      style={{
+                        width: cardWidth,
+                        aspectRatio: "3/4",
+                      }}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      {(isCenter || isMobile) && (
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-3 sm:p-4">
+                          <p className="text-white text-sm sm:text-base font-semibold tracking-wide">
+                            {image.label}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-10">
+          <button
+            onClick={goPrev}
+            aria-label="Previous image"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#D4C4A8] hover:bg-[#C4B498] text-gray-900 flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+          >
+            <ChevronLeft size={22} strokeWidth={2.5} />
+          </button>
+
+          <div className="flex gap-1.5 sm:hidden max-w-[50vw] overflow-x-auto py-1">
+            {galleryImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-1.5 rounded-full flex-shrink-0 transition-all duration-300 ${
+                  i === activeIndex ? "w-6 bg-[#4B7D1C]" : "w-1.5 bg-[#D4C4A8]"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={goNext}
+            aria-label="Next image"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#D4C4A8] hover:bg-[#C4B498] text-gray-900 flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+          >
+            <ChevronRight size={22} strokeWidth={2.5} />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HomeGallery;
