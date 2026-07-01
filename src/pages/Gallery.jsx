@@ -2,21 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const allImages = [
-  { id: 1, src: "/product1.png", category: "Products" },
-  { id: 2, src: "/product2.png", category: "Products" },
-  { id: 3, src: "/product3.png", category: "Products" },
-  { id: 4, src: "/product4.png", category: "Products" },
-  { id: 5, src: "/pro1.png", category: "Products" },
-  { id: 6, src: "/pro2.png", category: "Products" },
-  
-  { id: 10, src: "/pro3.png", category: "Products" },
-  { id: 11, src: "/pro4.png", category: "Products" },
-  { id: 12, src: "/pro5.png", category: "Products" },
-  { id: 13, src: "/pro6.png", category: "Products" },
-  { id: 14, src: "/pro7.png", category: "Products" },
-  { id: 15, src: "/pro8.png", category: "Products" },
-
- 
+  { id: 1, src: "/masala_tofu.png", category: "Products", label: "Masala Tofu" },
+  { id: 2, src: "/extra_firm.png", category: "Products", label: "Extra Firm Tofu" },
 ];
 
 const Gallery = () => {

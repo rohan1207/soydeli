@@ -328,8 +328,8 @@ const AboutUs = () => {
               >
                 <div className="w-full h-full bg-white rounded-2xl shadow-[0_8px_30px_rgba(75,125,28,0.1)] overflow-hidden border border-[#EEF4E6]">
                   <motion.img
-                    src={"/pro1.png"}
-                    alt="Soydeli Masala Tofu"
+                    src={"/masala_tofu.png"}
+                    alt="Masala Tofu"
                     className="w-full h-full object-cover"
                     style={{
                       scale: backImageScale,
@@ -355,8 +355,8 @@ const AboutUs = () => {
               >
                 <div className="w-full h-full bg-white rounded-2xl shadow-[0_8px_30px_rgba(75,125,28,0.1)] overflow-hidden border border-[#EEF4E6]">
                   <motion.img
-                    src={"/pro2.png"}
-                    alt="Soydeli Extra Firm Tofu"
+                    src={"/extra_firm.png"}
+                    alt="Extra Firm Tofu"
                     className="w-full h-full object-cover"
                     style={{
                       scale: frontImageScale,
@@ -584,8 +584,8 @@ const AboutUs = () => {
 
                 <div className="absolute top-[-5%] sm:top-[-10%] right-[-5%] sm:right-[-20%] w-32 sm:w-48 h-32 sm:h-50">
                   <img
-                    src="/pro3.png"
-                    alt="Soydeli Classic Tofu"
+                    src="/extra_firm.png"
+                    alt="Extra Firm Tofu"
                     className="w-full h-full object-contain sm:object-cover"
                   />
                   <div
@@ -595,8 +595,8 @@ const AboutUs = () => {
                 </div>
 
                 <img
-                  src="/pro4.png"
-                  alt="Soydeli Family Pack"
+                  src="/masala_tofu.png"
+                  alt="Masala Tofu"
                   className="absolute -bottom-4 sm:-bottom-8 left-[-10%] sm:left-[-40%] w-32 sm:w-48 h-32 sm:h-58 object-contain sm:object-cover"
                 />
               </div>

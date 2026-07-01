@@ -1,53 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import AddToCartButton from "./AddToCartButton";
 import ProductDetailPopup from "./ProductDetailPopup";
+import { products } from "../data/products";
 
-const dummyItems = [
-  {
-    sku: "SOYDELI-MASALA-001",
-    name: "Soydeli Masala Tofu",
-    description: "Spiced masala tofu packed with 30g plant protein. Perfect for curries & stir-fries.",
-    discountedPrice: 120,
-    mrp: 120,
-    serves: 2,
-    ratings: 4.9,
-    images: ["/product1.png"],
-  },
-  {
-    sku: "SOYDELI-FIRM-002",
-    name: "Soydeli Extra Firm Tofu",
-    description: "Firm block ideal for grilling, pan-frying & tikka. 18g protein per 100g.",
-    discountedPrice: 120,
-    mrp: 120,
-    serves: 2,
-    ratings: 4.8,
-    images: ["/product2.png"],
-  },
-  {
-    sku: "SOYDELI-FAMILY-003",
-    name: "Soydeli Family Pack",
-    description: "4×200g value pack for weekly meal prep. Keep refrigerated at 4°C.",
-    discountedPrice: 440,
-    mrp: 480,
-    serves: 8,
-    ratings: 4.9,
-    images: ["/product3.png"],
-  }
-];
+const menuItems = products.map((product) => ({
+  sku: `SOYDELI-${product.id}`,
+  name: product.name,
+  description: product.shortDescription,
+  discountedPrice: 120,
+  mrp: 120,
+  serves: 2,
+  ratings: product.id === 1 ? 4.9 : 4.8,
+  images: [product.image],
+}));
 
 const SpecialProposals = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % dummyItems.length);
+    setCurrentSlide((prev) => (prev + 1) % menuItems.length);
   };
 
   const handlePrevSlide = () => {
     setCurrentSlide((prev) =>
-      prev === 0 ? dummyItems.length - 1 : prev - 1
+      prev === 0 ? menuItems.length - 1 : prev - 1
     );
   };
 
@@ -57,8 +36,6 @@ const SpecialProposals = () => {
   return (
     <section className="bg-[#F4EAD7] py-20 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto">
-
-        {/* Section Header */}
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -72,13 +49,12 @@ const SpecialProposals = () => {
           </h2>
         </motion.div>
 
-        {/* Desktop Grid */}
         <motion.div
-          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="hidden md:grid md:grid-cols-2 gap-10 max-w-4xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          {dummyItems.map((item) => (
+          {menuItems.map((item) => (
             <motion.div
               key={item.sku}
               className={cardBaseStyle}
@@ -91,8 +67,6 @@ const SpecialProposals = () => {
                   alt={item.name}
                   className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-
-                {/* Ratings */}
                 <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full shadow">
                   <div className="flex items-center gap-1 text-[#6AAF48] font-bold">
                     <Star className="w-4 h-4 fill-[#6AAF48]" />
@@ -105,9 +79,7 @@ const SpecialProposals = () => {
                 <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">
                   {item.name}
                 </h3>
-                <p className="text-gray-700 text-sm mb-4">
-                  {item.description}
-                </p>
+                <p className="text-gray-700 text-sm mb-4">{item.description}</p>
 
                 <div className="flex justify-between items-center mt-4 mb-4">
                   <div>
@@ -129,13 +101,12 @@ const SpecialProposals = () => {
           ))}
         </motion.div>
 
-        {/* Mobile Slider */}
-        <div className="md:hidden relative mt-8">
+        <div className="md:hidden relative mt-8 overflow-hidden">
           <motion.div
             className="flex transition-transform duration-500"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            {dummyItems.map((item) => (
+            {menuItems.map((item) => (
               <div key={item.sku} className="w-full px-4 flex-shrink-0">
                 <div
                   className={cardBaseStyle}
@@ -143,6 +114,7 @@ const SpecialProposals = () => {
                 >
                   <img
                     src={item.images[0]}
+                    alt={item.name}
                     className="w-full h-56 object-cover"
                   />
 
@@ -166,7 +138,6 @@ const SpecialProposals = () => {
             ))}
           </motion.div>
 
-          {/* Slider Controls */}
           <div className="flex justify-center gap-4 mt-4">
             <button
               onClick={handlePrevSlide}

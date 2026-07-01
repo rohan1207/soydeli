@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { products } from "../data/products";
 
-const galleryImages = [
-  { src: "/pro1.png", alt: "Soydeli Masala Tofu", label: "Masala Tofu" },
-  { src: "/pro2.png", alt: "Soydeli Extra Firm Tofu", label: "Extra Firm" },
-  { src: "/pro3.png", alt: "Soydeli Classic Tofu", label: "Classic Plain" },
-  { src: "/product1.png", alt: "Tofu stir-fry bowl", label: "Stir-Fry Ready" },
-  { src: "/product2.png", alt: "Grilled tofu plate", label: "Grill & Serve" },
-  { src: "/about3.png", alt: "Fresh Soydeli pack", label: "Fresh Packed" },
-  { src: "/tofu2.png", alt: "Tofu cubes on board", label: "Chef's Choice" },
-];
+const galleryImages = products.map((product) => ({
+  src: product.image,
+  alt: product.name,
+  label: product.name,
+}));
 
 const getVisibleRange = (activeIndex, total, count) => {
   const half = Math.floor(count / 2);
@@ -22,20 +19,19 @@ const getVisibleRange = (activeIndex, total, count) => {
 
 const getCardWidth = (visibleCount) => {
   if (visibleCount === 1) return "min(88vw, 320px)";
-  if (visibleCount === 3) return "clamp(160px, 28vw, 240px)";
+  if (visibleCount === 2) return "clamp(180px, 40vw, 280px)";
   return "clamp(180px, 18vw, 280px)";
 };
 
 const HomeGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     const updateCount = () => {
       const w = window.innerWidth;
       if (w < 640) setVisibleCount(1);
-      else if (w < 1024) setVisibleCount(3);
-      else setVisibleCount(5);
+      else setVisibleCount(2);
     };
     updateCount();
     window.addEventListener("resize", updateCount);
@@ -75,15 +71,15 @@ const HomeGallery = () => {
           transition={{ duration: 0.6 }}
           className="text-center text-gray-700 text-sm sm:text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-14 px-2"
         >
-          Soydeli tofu is soft, versatile, and packed with plant protein — perfect
-          for curries, grills, stir-fries, and everyday Indian meals.
+          Soydeli Masala Tofu and Extra Firm Tofu — soft, versatile, and packed
+          with plant protein for curries, grills, stir-fries, and everyday meals.
         </motion.p>
 
         <div
           className="relative mx-auto px-1 sm:px-0"
           style={{ perspective: "1400px", perspectiveOrigin: "center center" }}
         >
-          <div className="flex items-center justify-center min-h-[360px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[520px]">
+          <div className="flex items-center justify-center min-h-[360px] sm:min-h-[400px] md:min-h-[480px]">
             <AnimatePresence mode="popLayout">
               {visibleIndices.map((imageIndex) => {
                 const image = galleryImages[imageIndex];
@@ -99,7 +95,7 @@ const HomeGallery = () => {
                     animate={{
                       opacity: isMobile ? 1 : 1 - absOffset * 0.1,
                       rotateY: isMobile ? 0 : offset * 12,
-                      scale: isMobile ? 1 : isCenter ? 1.05 : 0.88 - absOffset * 0.03,
+                      scale: isMobile ? 1 : isCenter ? 1.05 : 0.92,
                       x: isMobile ? 0 : offset * 36,
                       z: isCenter ? 80 : -absOffset * 55,
                     }}

@@ -29,12 +29,12 @@ const ProductDetail = () => {
             initial={{ opacity: 0, x: -24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative rounded-3xl overflow-hidden bg-[#F5F7F2] border border-[#EEF4E6] shadow-[0_8px_30px_rgba(75,125,28,0.1)]"
+            className="relative flex items-center justify-center rounded-3xl bg-white border border-[#EEF4E6] shadow-[0_8px_30px_rgba(75,125,28,0.1)] px-6 py-8 sm:px-8 sm:py-10 min-h-[300px] sm:min-h-[360px]"
           >
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-72 sm:h-96 lg:h-[28rem] object-cover"
+              className="w-auto max-w-[80%] sm:max-w-[75%] max-h-[340px] sm:max-h-[400px] lg:max-h-[440px] object-contain"
             />
             <span className="absolute top-5 left-5 bg-[#4B7D1C] text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full">
               {product.tag}

@@ -2,57 +2,7 @@ import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import SpecialProposals from "../components/SpecialProposals";
-
-const products = [
-  {
-    name: "Soydeli Masala Tofu",
-    desc: "Spiced masala tofu — great for curries, wraps & stir-fries. 200g · 30g plant protein.",
-    price: "₹120",
-    img: "/pro1.png",
-  },
-  {
-    name: "Soydeli Extra Firm Tofu",
-    desc: "Firm block for grilling, pan-frying & tikka. Holds shape beautifully. 200g pack.",
-    price: "₹120",
-    img: "/pro2.png",
-  },
-  {
-    name: "Soydeli Classic Plain Tofu",
-    desc: "Soft, versatile tofu for everyday Indian & international dishes. 200g pack.",
-    price: "₹110",
-    img: "/pro3.png",
-  },
-  {
-    name: "Soydeli Silken Tofu",
-    desc: "Ultra-soft texture for smoothies, desserts, soups & dips. 200g pack.",
-    price: "₹130",
-    img: "/pro4.png",
-  },
-  {
-    name: "Soydeli Herb-Marinated Tofu",
-    desc: "Pre-marinated with herbs & spices — ready to cook in minutes. 200g pack.",
-    price: "₹140",
-    img: "/pro6.png",
-  },
-  {
-    name: "Soydeli Smoked Tofu",
-    desc: "Wood-smoked flavour for salads, sandwiches & bowls. 200g pack.",
-    price: "₹150",
-    img: "/pro5.png",
-  },
-  {
-    name: "Soydeli Family Pack (4×200g)",
-    desc: "Best value for weekly meal prep. Mix of Masala & Extra Firm. Keep at 4°C.",
-    price: "₹440",
-    img: "/pro7.png",
-  },
-  {
-    name: "Soydeli Bulk Box (10×200g)",
-    desc: "Ideal for restaurants, caterers & fitness meal prep. Chilled delivery.",
-    price: "₹1,050",
-    img: "/pro8.png",
-  },
-];
+import { products } from "../data/products";
 
 const OurMenu = () => {
   const { scrollYProgress } = useScroll();
@@ -87,12 +37,12 @@ const OurMenu = () => {
             SHOP SOYDELI TOFU
           </h1>
 
-          <div className="flex items-center justify-center mt-3">
-            <div className="w-8 h-0.5 bg-[#6AAF48] mr-3"></div>
-            <span className="text-[#6AAF48] font-semibold tracking-widest text-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-center mt-3 gap-2 sm:gap-0">
+            <div className="hidden sm:block w-8 h-0.5 bg-[#6AAF48] mr-3"></div>
+            <span className="text-[#6AAF48] font-semibold tracking-widest text-sm text-center">
               HIGH PROTEIN · 100% VEGAN
             </span>
-            <div className="w-8 h-0.5 bg-[#6AAF48] ml-3"></div>
+            <div className="hidden sm:block w-8 h-0.5 bg-[#6AAF48] ml-3"></div>
           </div>
         </motion.div>
 
@@ -135,23 +85,23 @@ const OurMenu = () => {
             </h2>
 
             <p className="text-gray-600 max-w-md">
-              Nutritious plant-based tofu made from quality soybeans. No
-              preservatives, FSSAI certified, and packed with 30g plant protein
-              per 200g pack. Keep refrigerated at 4°C.
+              Two signature tofu variants — Masala Tofu and Extra Firm Tofu.
+              No preservatives, FSSAI certified, and packed with plant protein.
+              Keep refrigerated at 4°C.
             </p>
           </motion.div>
         </div>
 
-        <div className="mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
-          {products.map((p, i) => (
+        <div className="mt-24 grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-3xl mx-auto">
+          {products.map((p) => (
             <motion.div
-              key={i}
+              key={p.id}
               className="bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transition-all border border-[#e8f5e4]"
               whileHover={{ scale: 1.03 }}
             >
               <div className="w-full h-48 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
                 <img
-                  src={p.img}
+                  src={p.image}
                   alt={p.name}
                   className="w-full h-full object-cover"
                 />
@@ -160,9 +110,9 @@ const OurMenu = () => {
               <h3 className="mt-4 font-bold text-lg text-[#1A1A1A]">
                 {p.name}
               </h3>
-              <p className="text-sm text-gray-600 mt-1">{p.desc}</p>
+              <p className="text-sm text-gray-600 mt-1">{p.shortDescription}</p>
 
-              <div className="mt-4 flex justify-between items-center">
+              <div className="mt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                 <span className="text-[#6AAF48] font-bold text-lg">
                   {p.price}
                 </span>

@@ -72,11 +72,8 @@ const subscriptionPlans = [
 ];
 
 const tofuProducts = [
-	{ id: 1, name: "Soydeli Masala Tofu", weight: "200g", image: "/product1.png" },
-	{ id: 2, name: "Soydeli Extra Firm Tofu", weight: "200g", image: "/product2.png" },
-	{ id: 3, name: "Soydeli Classic Plain Tofu", weight: "200g", image: "/product3.png" },
-	{ id: 4, name: "Soydeli Family Pack", weight: "4×200g", image: "/product4.png" },
-	{ id: 5, name: "Soydeli Bulk Box", weight: "10×200g", image: "/pro1.png" }
+	{ id: 1, name: "Masala Tofu", weight: "200g", image: "/masala_tofu.png" },
+	{ id: 2, name: "Extra Firm Tofu", weight: "200g", image: "/extra_firm.png" },
 ];
 
 const SubscriptionPage = () => {
@@ -334,7 +331,7 @@ const SubscriptionPage = () => {
 						{[
 							{ q: "How should I store Soydeli Tofu?", a: "Keep refrigerated at 4°C. Best consumed within 7 days of packaging for peak freshness." },
 							{ q: "Can I pause my subscription?", a: "Yes! Pause or skip any delivery from your account dashboard — no penalties." },
-							{ q: "What products can I choose?", a: "Pick from Masala, Extra Firm, Classic Plain, Family Pack, or Bulk Box variants." },
+							{ q: "What products can I choose?", a: "Choose from our two variants — Masala Tofu and Extra Firm Tofu." },
 							{ q: "Is there a cancellation fee?", a: "No! Cancel your Soydeli subscription anytime with no hidden fees." }
 						].map((faq, idx) => (
 							<div key={idx} className="bg-[#E6F4EA] rounded-2xl p-5">

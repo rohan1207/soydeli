@@ -14,7 +14,7 @@ const recipes = [
     id: 1,
     title: "Soydeli Masala Tofu Bhurji",
     product: "Masala Tofu",
-    image: "/pro1.png",
+    image: "/masala_tofu.png",
     time: "20 mins",
     servings: "2–3",
     difficulty: "Easy",
@@ -46,14 +46,14 @@ const recipes = [
   {
     id: 2,
     title: "Grilled Soydeli Tofu Tikka",
-    product: "Simple Tofu",
-    image: "/pro2.png",
+    product: "Extra Firm Tofu",
+    image: "/extra_firm.png",
     time: "35 mins (+ 30 mins marination)",
     servings: "3–4",
     difficulty: "Medium",
     tagline: "Smoky, charred cubes that work as a starter or wrap filling.",
     ingredients: [
-      "1 pack (200g) Soydeli Simple Tofu, cut into 2 cm cubes",
+      "1 pack (200g) Soydeli Extra Firm Tofu, cut into 2 cm cubes",
       "3 tbsp thick curd (dahi), whisked smooth",
       "1 tbsp ginger-garlic paste",
       "1 tsp kasuri methi, crushed",
@@ -76,19 +76,19 @@ const recipes = [
       "Alternatively, bake at 200°C for 18–20 minutes, turning once halfway through.",
       "Sprinkle chaat masala, serve with lemon wedges, mint chutney, and onion rings.",
     ],
-    tip: "Soydeli Simple Tofu holds its shape well on high heat — avoid flipping too early so you get proper grill marks.",
+    tip: "Soydeli Extra Firm Tofu holds its shape well on high heat — avoid flipping too early so you get proper grill marks.",
   },
   {
     id: 3,
     title: "Soydeli Tofu & Veggie Stir-Fry",
-    product: "Simple Tofu",
-    image: "/product2.png",
+    product: "Extra Firm Tofu",
+    image: "/extra_firm.png",
     time: "15 mins",
     servings: "2",
     difficulty: "Easy",
     tagline: "A light, weeknight bowl — great over rice or noodles.",
     ingredients: [
-      "1 pack (200g) Soydeli Simple Tofu, cut into 1.5 cm cubes",
+      "1 pack (200g) Soydeli Extra Firm Tofu, cut into 1.5 cm cubes",
       "1 tbsp sesame oil or vegetable oil",
       "2 cloves garlic, minced",
       "1 inch ginger, julienned",
@@ -116,7 +116,7 @@ const recipes = [
     id: 4,
     title: "Creamy Soydeli Masala Tofu Curry",
     product: "Masala Tofu",
-    image: "/product1.png",
+    image: "/masala_tofu.png",
     time: "30 mins",
     servings: "3–4",
     difficulty: "Easy",
@@ -286,7 +286,7 @@ const Recipes = () => {
             Tofu Recipes
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mt-3 sm:mt-4 leading-relaxed">
-            Simple, detailed recipes made for Soydeli Simple Tofu and Masala Tofu.
+            Simple, detailed recipes made for Soydeli Masala Tofu and Extra Firm Tofu.
             Buy our packs from your local store, then cook these at home.
           </p>
         </motion.header>

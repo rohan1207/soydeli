@@ -40,8 +40,8 @@ const OwnerMessage = () => {
       </div>
 
       <FloatingDish
-        src="/about4.png"
-        alt="Soydeli Masala Tofu"
+        src="/masala_tofu.png"
+        alt="Masala Tofu"
         className=" w-48 h-48 top-[68%] sm:w-72 sm:h-72 sm:top-[35%] -translate-y-1/2 left-[0%] sm:left-[0%]"
         animation={{
           y: [0, -15, 0],
@@ -49,8 +49,8 @@ const OwnerMessage = () => {
         }}
       />
       <FloatingDish
-        src="/about3.png"
-        alt="Soydeli Extra Firm Tofu"
+        src="/extra_firm.png"
+        alt="Extra Firm Tofu"
         className=" w-48 h-48 sm:w-72 sm:h-72 top-[-2%] sm:top-[10%] -translate-y-[70%]  right-[0%] sm:right-[0%]"
         animation={{
           y: [0, 15, 0],
