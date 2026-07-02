@@ -92,7 +92,7 @@ const WhyChooseUs = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-12">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-12">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -100,7 +100,7 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex items-start bg-white/90 backdrop-blur p-4 rounded-2xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-50"
+              className="relative z-10 flex items-start bg-white/90 backdrop-blur p-4 rounded-2xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-50"
             >
               <div className="flex-shrink-0 bg-gray-50 p-3 rounded-full">
                 {feature.icon}
@@ -117,14 +117,28 @@ const WhyChooseUs = () => {
           ))}
         </div>
 
+        {/* Mobile — image below content with scroll animation */}
         <motion.div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:left-auto sm:top-[-15%] sm:right-[-5%] sm:translate-x-0 sm:translate-y-0 w-52 sm:w-60 h-52 sm:h-60 z-0 pointer-events-none opacity-100 sm:opacity-100"
+          className="md:hidden flex justify-center mt-10 sm:mt-12 pointer-events-none"
           style={{ y, scale, rotate }}
         >
           <img
             src="/tofu3.png"
             alt="Soydeli Tofu stack"
-            className="w-full h-full object-cover "
+            className="w-64 h-64 sm:w-72 sm:h-72 object-contain"
+          />
+        </motion.div>
+
+        {/* Desktop — floating decorative image */}
+        <motion.div
+          className="hidden md:block absolute top-[-15%] right-[-5%] w-60 lg:w-72 h-60 lg:h-72 z-0 pointer-events-none"
+          style={{ y, scale, rotate }}
+        >
+          <img
+            src="/tofu3.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-contain"
           />
         </motion.div>
       </div>

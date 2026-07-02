@@ -18,7 +18,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen bg-[#f3f3f3] overflow-hidden">
+    <div className="relative w-full min-h-screen min-h-[100dvh] bg-[#f3f3f3] overflow-hidden flex items-center justify-center">
       <video
         ref={videoRef}
         src="/landingvideo.mp4"
@@ -26,7 +26,7 @@ const LandingPage = () => {
         muted
         playsInline
         onEnded={handleEnded}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="w-full h-full max-w-full max-h-full object-contain md:absolute md:inset-0 md:object-cover"
       />
     </div>
   );
