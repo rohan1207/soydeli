@@ -25,8 +25,8 @@ const Navbar = () => {
 
   const links = [
     { label: "Home", href: "/" },
+    { label: "Products", href: "/shop" },
     { label: "Recipes", href: "/recipes" },
-    { label: "Gallery", href: "/gallery" },
     { label: "About", href: "/about" },
   ];
 
@@ -58,7 +58,7 @@ const Navbar = () => {
               <Link
                 to={link.href}
                 key={link.label}
-                className="uppercase font-bold tracking-[0.2em] text-sm transition-colors duration-300 text-gray-900 hover:text-emerald-600"
+                className="nav-link"
               >
                 {link.label}
               </Link>
@@ -103,7 +103,7 @@ const Navbar = () => {
             {/* CTA */}
             <Link
               to="/contact"
-              className="flex items-center gap-2 bg-[#6AAF48] hover:bg-[#4B7A2F] text-white px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-[0.2em] transition shadow-md"
+              className="btn-primary gap-2 !px-6 !py-3"
             >
               <FaEnvelope size={16} />
               <span>Contact Us</span>
@@ -176,7 +176,7 @@ const Navbar = () => {
                 key={link.label}
                 to={link.href}
                 onClick={closeMobile}
-                className="text-gray-900 text-lg font-semibold tracking-wide hover:text-emerald-600"
+                className="text-gray-900 text-lg font-semibold tracking-wide hover:text-soydeli-primary"
               >
                 {link.label}
               </Link>
@@ -188,7 +188,7 @@ const Navbar = () => {
             <Link
               to="/contact"
               onClick={closeMobile}
-              className="w-full flex items-center justify-center gap-2 bg-[#6AAF48] hover:bg-[#4B7A2F] text-white px-5 py-3 rounded-xl text-base font-semibold shadow"
+              className="btn-primary w-full gap-2"
             >
               <FaEnvelope /> Contact Us
             </Link>

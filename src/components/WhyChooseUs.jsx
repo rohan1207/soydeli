@@ -1,45 +1,47 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { FiThumbsUp, FiAward, FiSmile } from "react-icons/fi";
+import { FiThumbsUp, FiAward } from "react-icons/fi";
 import { GiTomato, GiChefToque, GiFullPizza } from "react-icons/gi";
 import { MdEmojiFoodBeverage } from "react-icons/md";
+import {
+  COMPANY,
+  INGREDIENTS_SHORT,
+  PROTEIN,
+  AVAILABILITY,
+} from "../data/brandContent";
 
 const features = [
   {
-    icon: <GiTomato size={32} className="text-[#6AAF48]" />,
+    icon: <GiTomato size={32} className="text-soydeli-primary" />,
     title: "HIGH PROTEIN",
-    description:
-      "18g protein per 100g — more than paneer (14g) and eggs (13g). Fuel your day the plant way.",
+    description: PROTEIN.whyChooseLine,
   },
   {
-    icon: <FiThumbsUp size={32} className="text-[#6AAF48]" />,
-    title: "FOUR INGREDIENTS",
-    description:
-      "Soyabean, RO water, iodised salt & citric acid. Nothing hidden, nothing artificial.",
+    icon: <FiThumbsUp size={32} className="text-soydeli-primary" />,
+    title: "CLEAN INGREDIENTS",
+    description: `${INGREDIENTS_SHORT}. Nothing hidden, nothing artificial.`,
   },
   {
-    icon: <GiChefToque size={32} className="text-[#6AAF48]" />,
+    icon: <GiChefToque size={32} className="text-soydeli-primary" />,
     title: "CHEF-FRIENDLY",
     description:
       "Soft texture that holds shape in curries, tikkas, stir-fries, and snacks.",
   },
   {
-    icon: <MdEmojiFoodBeverage size={32} className="text-[#6AAF48]" />,
+    icon: <MdEmojiFoodBeverage size={32} className="text-soydeli-primary" />,
     title: "FSSAI CERTIFIED",
-    description:
-      "Manufactured by Vishal Industries with strict quality and hygiene standards.",
+    description: `Marketed by ${COMPANY.marketedBy} with strict quality and hygiene standards.`,
   },
   {
-    icon: <GiFullPizza size={32} className="text-[#6AAF48]  " />,
+    icon: <GiFullPizza size={32} className="text-soydeli-primary" />,
     title: "100% VEGAN",
     description:
       "Zero cholesterol, zero preservatives — pure plant protein for every diet.",
   },
   {
-    icon: <FiAward size={32} className="text-[#6AAF48]" />,
-    title: "FLEXIBLE ORDERS",
-    description:
-      "Subscribe weekly, order in bulk, or buy single packs — always fresh from our unit.",
+    icon: <FiAward size={32} className="text-soydeli-primary" />,
+    title: "AVAILABLE AT STORES",
+    description: AVAILABILITY.storeOrder,
   },
 ];
 
@@ -66,29 +68,26 @@ const WhyChooseUs = () => {
   });
 
   return (
-    <div
-      ref={containerRef}
-      className="relative bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
-    >
+    <div ref={containerRef} className="relative section-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
-          <motion.h3
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-sm font-bold text-[#4B7A2F] tracking-widest uppercase"
+            className="eyebrow"
           >
-            WHY SOYDELI
-          </motion.h3>
+            Why Soydeli
+          </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight lg:text-4xl"
+            className="section-title"
           >
-            BETTER PROTEIN, BETTER CHOICES
+            Better Protein, Better Choices
           </motion.h2>
         </div>
 
@@ -100,16 +99,16 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative z-10 flex items-start bg-white/90 backdrop-blur p-4 rounded-2xl hover:shadow-2xl transition-shadow duration-300 border border-emerald-50"
+              className="relative z-10 flex items-start card-soydeli card-soydeli-hover p-4 sm:p-5"
             >
-              <div className="flex-shrink-0 bg-gray-50 p-3 rounded-full">
+              <div className="flex-shrink-0 bg-soydeli-surface p-3 rounded-full border border-soydeli-border">
                 {feature.icon}
               </div>
               <div className="ml-4">
                 <h4 className="text-base sm:text-lg font-bold text-gray-900">
                   {feature.title}
                 </h4>
-                <p className="mt-1 text-sm sm:text-base text-gray-500">
+                <p className="mt-1 text-sm sm:text-base text-gray-600">
                   {feature.description}
                 </p>
               </div>
@@ -117,7 +116,6 @@ const WhyChooseUs = () => {
           ))}
         </div>
 
-        {/* Mobile — image below content with scroll animation */}
         <motion.div
           className="md:hidden flex justify-center mt-10 sm:mt-12 pointer-events-none"
           style={{ y, scale, rotate }}
@@ -129,7 +127,6 @@ const WhyChooseUs = () => {
           />
         </motion.div>
 
-        {/* Desktop — floating decorative image */}
         <motion.div
           className="hidden md:block absolute top-[-15%] right-[-5%] w-60 lg:w-72 h-60 lg:h-72 z-0 pointer-events-none"
           style={{ y, scale, rotate }}

@@ -117,7 +117,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <div className="max-w-6xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -136,7 +136,7 @@ const Cart = () => {
             <p className="text-xl text-gray-600 mb-4">Your cart is empty.</p>
             <Link
               to="/menu"
-              className="mt-6 inline-block bg-soydeli-gold text-white px-8 py-3 rounded-lg font-semibold hover:bg-soydeli-gold-dark transition-transform transform hover:scale-105"
+              className="mt-6 btn-primary"
             >
               Explore Our Menu
             </Link>
@@ -334,7 +334,7 @@ const Cart = () => {
               <div className="mt-6">
                 <button
                   onClick={handleCheckout}
-                  className="w-full bg-soydeli-gold text-white py-3 rounded-lg font-semibold hover:bg-soydeli-gold-dark transition-transform transform hover:scale-105"
+                  className="w-full btn-primary"
                 >
                   Proceed to Checkout
                 </button>

@@ -2,13 +2,14 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Phone, Leaf, Package, Thermometer, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { INGREDIENTS_SHORT, AVAILABILITY, PACKAGING } from "../data/brandContent";
 
 const SecondSection = () => {
   const features = [
     {
       Icon: Leaf,
       title: "Quality Soybeans",
-      subtitle: "Made from premium soyabean, RO water & natural coagulant",
+      subtitle: `Made from ${INGREDIENTS_SHORT}`,
     },
     {
       Icon: Thermometer,
@@ -18,12 +19,12 @@ const SecondSection = () => {
     {
       Icon: Package,
       title: "200g Fresh Packs",
-      subtitle: "Vacuum-sealed packs · best before 7 days from packaging",
+      subtitle: PACKAGING.freshPacksSubtitle,
     },
     {
       Icon: Truck,
-      title: "Maharashtra Delivery",
-      subtitle: "Fresh tofu shipped chilled from our Kolhapur facility",
+      title: AVAILABILITY.panIndiaTitle,
+      subtitle: AVAILABILITY.panIndiaSubtitle,
     },
   ];
   const targetRef = useRef(null);
@@ -50,7 +51,7 @@ const SecondSection = () => {
   return (
     <section
       ref={targetRef}
-      className="relative bg-gradient-to-b from-emerald-50 via-white to-amber-50 py-16 sm:py-20 px-4 sm:px-8 overflow-hidden min-h-screen"
+      className="relative section-page overflow-hidden min-h-screen"
     >
       {/* Background Text */}
       <motion.div
@@ -78,7 +79,7 @@ const SecondSection = () => {
             viewport={{ once: true }}
           >
             <img
-              src="/tofu2.png"
+              src="/tofu21.png"
               alt="Fresh tofu block"
               className="w-full h-full object-cover rounded-[32px] drop-shadow-2xl"
             />
@@ -93,16 +94,13 @@ const SecondSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2
-              className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight mb-6 z-40 "
-              style={{ letterSpacing: "0.02em" }}
-            >
+            <h2 className="section-title leading-tight mb-6 z-40">
               CRAFTED FOR
               <br />
               EVERYDAY COOKING
             </h2>
 
-            <p className="text-gray-600 text-base leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+            <p className="section-desc mb-8 max-w-lg mx-auto lg:mx-0">
               Soydeli Tofu is a nutritious, plant-based protein made from high
               quality soybeans. Soft in texture and easy to cook, it works
               beautifully in curries, stir-fries, grills, and snacks — a smarter
@@ -110,16 +108,13 @@ const SecondSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-10">
-              <Link
-                to="/menu"
-                className="bg-[#6AAF48] text-white px-8 py-4 text-sm font-bold tracking-[0.2em] rounded-full hover:bg-[#4B7A2F] transition-colors w-full sm:w-auto shadow-lg"
-              >
-                SHOP SOYDELI
+              <Link to="/menu" className="btn-primary w-full sm:w-auto">
+                View Products
               </Link>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
-                  <Phone size={20} className="text-[#6AAF48]" />
+                <div className="w-12 h-12 bg-soydeli-surface rounded-full flex items-center justify-center border border-soydeli-border">
+                  <Phone size={20} className="text-soydeli-primary" />
                 </div>
                 <span className="text-gray-900 font-semibold text-lg leading-tight">
                   Call for bulk<br />
@@ -174,10 +169,10 @@ const SecondSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 bg-white/70 backdrop-blur-sm rounded-2xl p-5 shadow-lg"
+              className="flex items-center gap-4 card-soydeli card-soydeli-hover p-5"
             >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-50 rounded-full flex items-center justify-center shadow-inner flex-shrink-0">
-                <feature.Icon className="text-[#6AAF48]" size={28} />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-soydeli-surface rounded-full flex items-center justify-center border border-soydeli-border flex-shrink-0">
+                <feature.Icon className="text-soydeli-primary" size={28} />
               </div>
               <div>
                 <h3 className="font-bold text-gray-800 tracking-wider">

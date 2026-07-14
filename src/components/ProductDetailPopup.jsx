@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../config";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  XIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  StarIcon,
-} from "@heroicons/react/solid";
-import AddToCartButton from "./AddToCartButton";
+import { XIcon, StarIcon } from "@heroicons/react/solid";
 
 const RecommendedItemCard = ({ item }) => (
   <div className="flex-shrink-0 w-40 text-center">
@@ -18,16 +13,19 @@ const RecommendedItemCard = ({ item }) => (
         className="w-full h-full object-cover"
       />
     </div>
-    <h4 className="text-sm font-semibold text-gray-800 truncate">
+    <h4 className="text-sm font-semibold text-gray-800 truncate mb-2">
       {item.name}
     </h4>
-    <p className="text-sm font-bold text-soydeli-gold-dark">₹{item.discountedPrice}</p>
-    <AddToCartButton item={item} />
+    <Link
+      to="/contact"
+      className="text-xs font-semibold uppercase tracking-wider text-[#4B7A2F] hover:text-[#6AAF48] transition-colors"
+    >
+      Read More
+    </Link>
   </div>
 );
 
 const ProductDetailPopup = ({ product, onClose }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [recommendedItems, setRecommendedItems] = useState([]);
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const ProductDetailPopup = ({ product, onClose }) => {
 
           const foundItems = product.recommended
             .map((sku) => allItems.find((item) => item.sku === sku))
-            .filter(Boolean); // Filter out any undefined items if SKU not found
+            .filter(Boolean);
 
           setRecommendedItems(foundItems);
         } catch (error) {
@@ -54,30 +52,7 @@ const ProductDetailPopup = ({ product, onClose }) => {
     fetchRecommended();
   }, [product]);
 
-  useEffect(() => {
-    if (product?.images?.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % product.images.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [product]);
-
   if (!product) return null;
-
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide
-      ? product.images.length - 1
-      : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === product.images.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
 
   const backdropVariants = {
     hidden: { opacity: 0 },
@@ -146,8 +121,8 @@ const ProductDetailPopup = ({ product, onClose }) => {
               </div>
               <p className="text-gray-600 mb-4">{product.description}</p>
 
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center">
+              {product.ratings && (
+                <div className="flex items-center mb-4">
                   <StarIcon className="w-6 h-6 text-soydeli-gold mr-1" />
                   <span className="text-xl font-bold text-gray-800">
                     {product.ratings}
@@ -156,33 +131,35 @@ const ProductDetailPopup = ({ product, onClose }) => {
                     ({product.reviews?.length || 0} reviews)
                   </span>
                 </div>
-                <div className="flex items-baseline">
-                  <span className="text-2xl font-bold text-soydeli-gold-dark mr-3">
-                    ₹{product.discountedPrice}
-                  </span>
-                  <span className="text-lg text-gray-500 line-through">
-                    ₹{product.mrp}
-                  </span>
+              )}
+
+              {product.serves && (
+                <div className="text-sm text-gray-500 mb-4">
+                  Serves: {product.serves}
                 </div>
-              </div>
+              )}
 
-              <div className="text-sm text-gray-500 mb-4">
-                Serves: {product.serves}
-              </div>
-
-              <div className="mb-4">
-                <h3 className="font-semibold text-gray-700 mb-2">
-                  Ingredients:
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {Array.isArray(product.ingredients)
-                    ? product.ingredients.join(", ")
-                    : product.ingredients}
-                </p>
-              </div>
+              {product.ingredients && (
+                <div className="mb-4">
+                  <h3 className="font-semibold text-gray-700 mb-2">
+                    Ingredients:
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {Array.isArray(product.ingredients)
+                      ? product.ingredients.join(", ")
+                      : product.ingredients}
+                  </p>
+                </div>
+              )}
 
               <div className="mt-auto pt-4">
-                <AddToCartButton item={product} />
+                <Link
+                  to="/contact"
+                  onClick={onClose}
+                  className="btn-primary w-full"
+                >
+                  Read More
+                </Link>
               </div>
 
               {product.reviews && product.reviews.length > 0 && (

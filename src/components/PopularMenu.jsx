@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { UtensilsCrossed, Fish, Leaf, CakeSlice, Beer } from 'lucide-react';
-import AddToCartButton from './AddToCartButton';
 
 
 // Import menu item images
@@ -24,10 +24,14 @@ const MenuItem = ({ item }) => (
       <div className="flex items-baseline justify-between mb-2">
         <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
         <div className="flex-grow mx-4 border-b-2 border-dotted border-gray-300"></div>
-        <p className="font-bold text-gray-800 text-lg">₹{item.discountedPrice}</p>
       </div>
-      <p className="text-gray-500 text-sm leading-relaxed pr-24">{item.description}</p>
-      <AddToCartButton item={item} />
+      <p className="text-gray-500 text-sm leading-relaxed pr-24 mb-3">{item.description}</p>
+      <Link
+        to="/contact"
+        className="text-sm font-semibold uppercase tracking-wider text-[#4B7A2F] hover:text-[#6AAF48] transition-colors"
+      >
+        Read More
+      </Link>
     </div>
   </div>
 );
@@ -196,7 +200,7 @@ const PopularMenu = () => {
         }
       `}</style>
       
-      <section className="relative bg-gray-50 py-20 px-8 overflow-hidden min-h-screen">
+      <section className="section-page overflow-hidden min-h-screen">
         {/* Floating decorative elements */}
         <FloatingCornDish />
         <FloatingOnions />
@@ -266,7 +270,7 @@ const PopularMenu = () => {
             style={{ animation: 'slideUp 0.8s ease-out 0.6s forwards' }}
           >
             <button 
-              className="border-2 border-soydeli-gold text-soydeli-gold px-12 py-4 font-bold tracking-[0.2em] text-sm hover:bg-soydeli-gold hover:text-white transition-all duration-300 rounded-md hover:scale-105 active:scale-95 hover:shadow-lg"
+                  className="btn-secondary px-12 py-4 hover:!bg-soydeli-primary hover:!text-white hover:scale-105 active:scale-95"
               style={{ boxShadow: 'none' }}
               onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(239, 68, 68, 0.3)'}
               onMouseLeave={(e) => e.target.style.boxShadow = 'none'}

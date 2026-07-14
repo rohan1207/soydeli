@@ -26,7 +26,7 @@ const LandingPage = () => {
         muted
         playsInline
         onEnded={handleEnded}
-        className="w-full h-full max-w-full max-h-full object-contain md:absolute md:inset-0 md:object-cover"
+        className="w-[75%] h-[75%] max-w-[75vw] max-h-[75dvh] object-contain"
       />
     </div>
   );

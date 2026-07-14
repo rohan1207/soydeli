@@ -8,11 +8,12 @@ import {
   Twitter,
   Instagram,
 } from "lucide-react";
+import { COMPANY } from "../data/brandContent";
 
 const InfoCard = ({ icon, title, lines }) => (
   <div className="text-center">
     <div className="flex justify-center mb-2 sm:mb-4">{icon}</div>
-    <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-widest text-[#6AAF48] mb-2 sm:mb-3">
+    <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-widest text-soydeli-primary mb-2 sm:mb-3">
       {title}
     </h3>
     {lines.map((line, index) => (
@@ -29,36 +30,32 @@ const InfoCard = ({ icon, title, lines }) => (
 const Footer = () => {
   const info = [
     {
-      icon: <MessageSquare className="w-7 h-7 sm:w-8 sm:h-8 text-[#6AAF48]" />,
-      title: "About Soydeli",
-      lines: [
-        "High-protein plant-based tofu",
-        "100% Vegan · No Preservatives",
-      ],
+      icon: <MapPin className="w-7 h-7 sm:w-8 sm:h-8 text-soydeli-primary" />,
+      title: COMPANY.corporateOffice.title,
+      lines: COMPANY.corporateOffice.lines,
     },
     {
-      icon: <Phone className="w-7 h-7 sm:w-8 sm:h-8 text-[#6AAF48]" />,
+      icon: <Phone className="w-7 h-7 sm:w-8 sm:h-8 text-soydeli-primary" />,
       title: "Talk To Us",
-      lines: ["+91 8828 55 6000", "Mon–Sat · 9am–6pm"],
+      lines: [COMPANY.phone, "Mon–Sat · 9am–6pm"],
     },
     {
-      icon: <Mail className="w-7 h-7 sm:w-8 sm:h-8 text-[#6AAF48]" />,
+      icon: <Mail className="w-7 h-7 sm:w-8 sm:h-8 text-soydeli-primary" />,
       title: "Orders & Wholesale",
-      lines: ["hello@soydeli.in", "orders@soydeli.in"],
+      lines: [COMPANY.email, COMPANY.ordersEmail],
     },
     {
-      icon: <MapPin className="w-7 h-7 sm:w-8 sm:h-8 text-[#6AAF48]" />,
-      title: "Manufacturing Unit",
-      lines: [
-        "93, 9th Lane, Subhash Road",
-        "Jaysingpur, Kolhapur · MH 416101",
-      ],
+      icon: (
+        <MessageSquare className="w-7 h-7 sm:w-8 sm:h-8 text-soydeli-primary" />
+      ),
+      title: COMPANY.manufacturingUnit.title,
+      lines: COMPANY.manufacturingUnit.lines,
     },
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-white via-[] to-white pt-24 pb-12 border-t border-emerald-100">
-      <div className="absolute inset-0 bg-emerald-50/40 backdrop-blur-[1px]"></div>
+    <footer className="relative bg-gradient-to-br from-white via-soydeli-page to-white pt-24 pb-12 border-t border-soydeli-border">
+      <div className="absolute inset-0 bg-soydeli-surface/40 backdrop-blur-[1px]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-16 sm:mb-20 lg:mb-24">
@@ -72,10 +69,10 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="border-t border-emerald-100 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-soydeli-border pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-700 text-xs sm:text-sm mb-4 md:mb-0 tracking-wide">
-            © {new Date().getFullYear()} Soydeli Tofu · Vishal Industries ·
-            FSSAI Certified · Made in Maharashtra
+            © {new Date().getFullYear()} Soydeli Tofu · {COMPANY.marketedBy} ·
+            FSSAI Certified · Made in India
           </p>
 
           <div className="mb-4 md:mb-0">
@@ -87,30 +84,21 @@ const Footer = () => {
           </div>
 
           <div className="flex space-x-6 sm:space-x-4">
-            <a
-              href="#"
-              className="text-[#6AAF48] hover:text-[#6AAF48] transition"
-            >
+            <a href="#" className="text-soydeli-primary hover:text-soydeli-dark transition">
               <Facebook size={18} />
             </a>
-            <a
-              href="#"
-              className="text-[#6AAF48] hover:text-[#6AAF48] transition"
-            >
+            <a href="#" className="text-soydeli-primary hover:text-soydeli-dark transition">
               <Twitter size={18} />
             </a>
-            <a
-              href="#"
-              className="text-[#6AAF48] hover:text-[#6AAF48] transition"
-            >
+            <a href="#" className="text-soydeli-primary hover:text-soydeli-dark transition">
               <Instagram size={18} />
             </a>
           </div>
         </div>
 
-        <div className="mt-6 sm:mt-8 text-center text-[10px] sm:text-[11px] tracking-wide text-[#6AAF48]">
+        <div className="mt-6 sm:mt-8 text-center text-[10px] sm:text-[11px] tracking-wide text-soydeli-primary">
           Designed & Developed by{" "}
-          <span className="text-[#6AAF48] font-semibold">TheSocialKollab</span>
+          <span className="text-soydeli-primary font-semibold">TheSocialKollab</span>
         </div>
       </div>
     </footer>

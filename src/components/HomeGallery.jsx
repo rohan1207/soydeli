@@ -62,14 +62,14 @@ const HomeGallery = () => {
   const isMobile = visibleCount === 1;
 
   return (
-    <section className="bg-[#F5F0E8] py-12 sm:py-20 px-3 sm:px-6 overflow-hidden">
+    <section className="section-page overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center text-gray-700 text-sm sm:text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-14 px-2"
+          className="text-center section-desc max-w-3xl mx-auto mb-8 sm:mb-14 px-2"
         >
           Soydeli Masala Tofu and Extra Firm Tofu — soft, versatile, and packed
           with plant protein for curries, grills, stir-fries, and everyday meals.
@@ -109,7 +109,7 @@ const HomeGallery = () => {
                   >
                     <div
                       className={`relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg transition-shadow duration-300 ${
-                        isCenter ? "shadow-2xl ring-2 ring-[#8CC63F]/35" : ""
+                        isCenter ? "shadow-soydeli-lg ring-2 ring-soydeli-lime/35" : ""
                       }`}
                       style={{
                         width: cardWidth,
@@ -141,7 +141,7 @@ const HomeGallery = () => {
           <button
             onClick={goPrev}
             aria-label="Previous image"
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#D4C4A8] hover:bg-[#C4B498] text-gray-900 flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+            className="btn-icon"
           >
             <ChevronLeft size={22} strokeWidth={2.5} />
           </button>
@@ -153,7 +153,7 @@ const HomeGallery = () => {
                 onClick={() => setActiveIndex(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 className={`h-1.5 rounded-full flex-shrink-0 transition-all duration-300 ${
-                  i === activeIndex ? "w-6 bg-[#4B7D1C]" : "w-1.5 bg-[#D4C4A8]"
+                  i === activeIndex ? "w-6 bg-soydeli-label" : "w-1.5 bg-soydeli-border"
                 }`}
               />
             ))}
@@ -162,7 +162,7 @@ const HomeGallery = () => {
           <button
             onClick={goNext}
             aria-label="Next image"
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#D4C4A8] hover:bg-[#C4B498] text-gray-900 flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+            className="btn-icon"
           >
             <ChevronRight size={22} strokeWidth={2.5} />
           </button>

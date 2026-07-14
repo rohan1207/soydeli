@@ -414,7 +414,7 @@ const Checkout = () => {
   const remainingCount = cartItems.length - VISIBLE_COUNT;
 
   return (
-    <div className="bg-gradient-to-b from-neutral-50 via-white to-neutral-100 min-h-screen font-sans mt-12">
+    <div className="page-shell font-sans">
       <div
         className={
           "max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 " +
@@ -437,7 +437,7 @@ const Checkout = () => {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all cursor-pointer ${
                     active
-                      ? "bg-amber-500 border-amber-500 text-white shadow"
+                      ? "bg-soydeli-primary border-amber-500 text-white shadow"
                       : completed
                       ? "bg-emerald-500 border-emerald-500 text-white"
                       : "bg-white border-gray-300 text-gray-500"
@@ -449,7 +449,7 @@ const Checkout = () => {
                   {label}
                 </div>
                 {step === 1 && (
-                  <div className="w-10 md:w-16 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600" />
+                  <div className="w-10 md:w-16 h-[2px] bg-gradient-to-r from-soydeli-primary to-soydeli-dark" />
                 )}
               </div>
             );
@@ -481,7 +481,7 @@ const Checkout = () => {
                     </p>
                     <button
                       onClick={() => setShowAddressForm(true)}
-                      className="inline-flex items-center gap-2 bg-amber-500 text-white px-5 py-2.5 rounded-xl font-medium shadow hover:bg-amber-600 transition"
+                      className="inline-flex items-center gap-2 bg-soydeli-primary text-white px-5 py-2.5 rounded-xl font-medium shadow hover:bg-soydeli-dark transition"
                     >
                       <PlusCircle className="w-5 h-5" /> Add Address
                     </button>
@@ -541,7 +541,7 @@ const Checkout = () => {
                   <div className="mt-8 flex justify-end">
                     <button
                       onClick={() => setCurrentStep(2)}
-                      className="px-6 py-3 rounded-xl bg-amber-500 text-white font-semibold shadow hover:bg-amber-600 transition disabled:bg-gray-300"
+                      className="px-6 py-3 rounded-xl bg-soydeli-primary text-white font-semibold shadow hover:bg-soydeli-dark transition disabled:bg-gray-300"
                       disabled={!selectedAddress}
                     >
                       Continue to Review
@@ -621,7 +621,7 @@ const Checkout = () => {
                     </button>
                   )}
                 </div>
-                <div className="mt-8 p-5 rounded-2xl bg-gradient-to-br from-amber-50 via-amber-50 to-amber-100/30 border border-amber-200">
+                <div className="mt-8 p-5 rounded-2xl bg-gradient-to-br from-soydeli-surface to-white border border-amber-200">
                   <div className="flex justify-between items-center mb-2 text-sm text-gray-600">
                     <span>Items ({cartItems.length})</span>
                     <span>₹{(total || 0).toFixed(2)}</span>
@@ -643,7 +643,7 @@ const Checkout = () => {
                     disabled={
                       submitting || cartItems.length === 0 || !selectedAddress
                     }
-                    className="flex-1 py-3 rounded-xl font-semibold bg-amber-500 text-white shadow-lg shadow-amber-500/30 hover:bg-amber-600 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+                    className="flex-1 py-3 rounded-xl font-semibold bg-soydeli-primary text-white shadow-lg shadow-soydeli-primary/30 hover:bg-soydeli-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Processing..." : "Pay Securely"}
                   </button>
@@ -700,7 +700,7 @@ const Checkout = () => {
                 <button
                   onClick={() => setCurrentStep(2)}
                   disabled={!selectedAddress || cartItems.length === 0}
-                  className="w-full mt-6 bg-amber-500 text-white py-3 rounded-xl font-semibold hover:bg-amber-600 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  className="w-full mt-6 bg-soydeli-primary text-white py-3 rounded-xl font-semibold hover:bg-soydeli-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                   Continue
                 </button>
@@ -711,7 +711,7 @@ const Checkout = () => {
                   disabled={
                     submitting || cartItems.length === 0 || !selectedAddress
                   }
-                  className="w-full mt-6 bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 rounded-xl font-semibold shadow-lg shadow-amber-500/30 hover:from-amber-600 hover:to-amber-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  className="w-full mt-6 bg-gradient-to-r from-soydeli-primary to-soydeli-dark text-white py-3 rounded-xl font-semibold shadow-lg shadow-soydeli-primary/30 hover:from-soydeli-dark hover:to-soydeli-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                   {submitting
                     ? "Processing..."
@@ -750,7 +750,7 @@ const Checkout = () => {
                   type="button"
                   onClick={useMyLocation}
                   disabled={locating}
-                  className="px-4 py-2 rounded-xl bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 disabled:bg-gray-400"
+                  className="px-4 py-2 rounded-xl bg-soydeli-primary text-white text-sm font-medium hover:bg-soydeli-dark disabled:bg-gray-400"
                 >
                   {locating ? "Locating..." : "📍 Use My Location"}
                 </button>
@@ -898,7 +898,7 @@ const Checkout = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-1 py-3 rounded-xl bg-amber-500 text-white font-semibold hover:bg-amber-600 transition disabled:bg-gray-400"
+                  className="flex-1 py-3 rounded-xl bg-soydeli-primary text-white font-semibold hover:bg-soydeli-dark transition disabled:bg-gray-400"
                 >
                   {submitting ? "Saving..." : "Save"}
                 </button>
@@ -921,7 +921,7 @@ const Checkout = () => {
           <button
             onClick={handlePayment}
             disabled={submitting || cartItems.length === 0 || !selectedAddress}
-            className="flex-1 ml-4 py-3 rounded-xl font-semibold bg-amber-500 text-white shadow hover:bg-amber-600 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="flex-1 ml-4 py-3 rounded-xl font-semibold bg-soydeli-primary text-white shadow hover:bg-soydeli-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             {submitting ? "Processing..." : `Pay ₹${(total || 0).toFixed(2)}`}
           </button>

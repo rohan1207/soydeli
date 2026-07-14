@@ -8,6 +8,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { FaStar, FaHeart } from "react-icons/fa";
+import { INGREDIENTS_SHORT } from "../data/brandContent";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,19 +56,19 @@ const AboutUs = () => {
       id: 1,
       title: "FSSAI CERTIFIED PRODUCTION",
       description: "Manufactured under strict hygiene and food safety standards.",
-      image: "/fresh_food.png",
+      image: "/fssai.png",
     },
     {
       id: 2,
       title: "COLD CHAIN STORAGE",
       description: "Every pack kept refrigerated at 4°C until it reaches you.",
-      image: "/about3.png",
+      image: "/cold.jpg",
     },
     {
       id: 3,
-      title: "QUALITY SOYBEANS",
-      description: "Made from premium soyabean, RO water, salt & citric acid only.",
-      image: "/about4.png",
+      title: "QUALITY Tofu",
+      description: `Made from premium dehulled soybean, ${INGREDIENTS_SHORT} only.`,
+      image: "/tofu.webp",
     },
   ];
 
@@ -88,7 +89,7 @@ const AboutUs = () => {
       role: "Fitness Enthusiast",
       time: "a week ago",
       review:
-        "18g protein per 100g — that's more than eggs! I use Soydeli Extra Firm Tofu in my meal prep every week. Great texture and clean ingredients.",
+        "15g protein per 100g with lower fat — that's cleaner than many everyday protein options! I use Soydeli Extra Firm Tofu in my meal prep every week. Great texture and clean ingredients.",
       rating: 5,
     },
     {
@@ -133,7 +134,7 @@ const AboutUs = () => {
       role: "Vegan Food Blogger",
       time: "2 weeks ago",
       review:
-        "Soydeli Tofu is the real deal — made in Kolhapur with just four ingredients. You can taste the quality in every bite. Proud to support a Maharashtra brand.",
+        "Soydeli Tofu is the real deal — clean ingredients and great taste in every bite. Proud to support an Indian plant-protein brand.",
       rating: 5,
     },
     {
@@ -273,7 +274,7 @@ const AboutUs = () => {
       {/* ABOUT SECTION */}
       <div
         ref={containerRef}
-        className="relative min-h-screen bg-gradient-to-br from-emerald-50 via-white to-[#FAFAFA] overflow-hidden"
+        className="relative min-h-screen bg-gradient-to-br from-soydeli-surface via-white to-[#FAFAFA] overflow-hidden"
       >
         {/* Background Decorative Elements */}
 
@@ -305,7 +306,7 @@ const AboutUs = () => {
             <div className="flex items-center justify-center gap-2 md:gap-4 px-4 mt-4">
               <div className="w-8 md:w-12 h-0.5 bg-[#6AAF48]"></div>
               <span className="text-[#4B7A2F] font-semibold text-xs md:text-sm tracking-widest uppercase">
-                Crafted in Kolhapur
+                Crafted with Care
               </span>
               <div className="w-8 md:w-12 h-0.5 bg-[#6AAF48]"></div>
             </div>
@@ -328,7 +329,7 @@ const AboutUs = () => {
               >
                 <div className="w-full h-full bg-white rounded-2xl shadow-[0_8px_30px_rgba(75,125,28,0.1)] overflow-hidden border border-[#EEF4E6]">
                   <motion.img
-                    src={"/masala_tofu.png"}
+                    src={"/abt.jpeg"}
                     alt="Masala Tofu"
                     className="w-full h-full object-cover"
                     style={{
@@ -355,7 +356,7 @@ const AboutUs = () => {
               >
                 <div className="w-full h-full bg-white rounded-2xl shadow-[0_8px_30px_rgba(75,125,28,0.1)] overflow-hidden border border-[#EEF4E6]">
                   <motion.img
-                    src={"/extra_firm.png"}
+                    src={"/toffu_tikka.jpg"}
                     alt="Extra Firm Tofu"
                     className="w-full h-full object-cover"
                     style={{
@@ -423,7 +424,7 @@ const AboutUs = () => {
                     suitable for a wide variety of Indian and international
                     dishes —{" "}
                     <span className="font-semibold border-b-2 border-[#6AAF48] pb-1">
-                      with more protein than paneer or eggs.
+                      lower fat with cleaner protein than paneer or eggs.
                     </span>
                   </p>
 
@@ -536,16 +537,16 @@ const AboutUs = () => {
                   </span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-                  Made in Kolhapur
+                  Plant Protein
                   <br />
                   for Every Indian Kitchen
                 </h2>
                 <p className="text-gray-500 mb-8">
-                  Soydeli Tofu is crafted by Vishal Industries in Jaysingpur,
-                  Kolhapur. We use only soyabean, RO water, iodised salt, and
-                  citric acid — no preservatives, no shortcuts. Every 200g pack
-                  delivers 30g plant protein and stays fresh for 7 days when
-                  refrigerated at 4°C.
+                  Soydeli Tofu is marketed by VittalEdge India LLP. We use RO
+                  water, dehulled soybean, iodised salt, and coagulant (E 516)
+                  — no preservatives, no shortcuts. Every 200g pack delivers up
+                  to 30g plant protein with 15g protein per 100g, with extended
+                  shelf life when refrigerated at 4°C.
                 </p>
 
                 {/* Review Box */}
@@ -555,7 +556,7 @@ const AboutUs = () => {
                       4.8
                     </span>
                     <div>
-                      <div className="flex text-yellow-500">
+                      <div className="flex text-soydeli-primary">
                         <FaStar />
                         <FaStar />
                         <FaStar />
@@ -584,7 +585,7 @@ const AboutUs = () => {
 
                 <div className="absolute top-[-5%] sm:top-[-10%] right-[-5%] sm:right-[-20%] w-32 sm:w-48 h-32 sm:h-50">
                   <img
-                    src="/extra_firm.png"
+                    src="/tofu3.png"
                     alt="Extra Firm Tofu"
                     className="w-full h-full object-contain sm:object-cover"
                   />
@@ -595,7 +596,7 @@ const AboutUs = () => {
                 </div>
 
                 <img
-                  src="/masala_tofu.png"
+                  src="/tofu5.webp"
                   alt="Masala Tofu"
                   className="absolute -bottom-4 sm:-bottom-8 left-[-10%] sm:left-[-40%] w-32 sm:w-48 h-32 sm:h-58 object-contain sm:object-cover"
                 />
@@ -606,7 +607,7 @@ const AboutUs = () => {
       </div>
 
       {/* TESTIMONIALS SECTION */}
-      <div className="bg-gradient-to-br from-emerald-50 via-white to-[#F5F7F2] py-20 overflow-hidden">
+      <div className="bg-gradient-to-br from-soydeli-surface via-white to-[#F5F7F2] py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 mb-16">
           {/* Header */}
           <motion.div
@@ -622,7 +623,7 @@ const AboutUs = () => {
               Testimonials
             </h1>
             <div className="flex items-center justify-center mt-4">
-              <div className="flex text-yellow-500 text-2xl">
+              <div className="flex text-soydeli-primary text-2xl">
                 <FaStar />
                 <FaStar />
                 <FaStar />
@@ -630,7 +631,7 @@ const AboutUs = () => {
                 <FaStar />
               </div>
               <span className="ml-3 text-gray-600 font-medium">
-                5,000+ happy customers across Maharashtra love Soydeli Tofu
+                5,000+ happy customers across India love Soydeli Tofu
               </span>
             </div>
 
@@ -734,7 +735,7 @@ const AboutUs = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex text-yellow-500 mb-4">
+                <div className="flex text-soydeli-primary mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <FaStar key={i} className="text-sm" />
                   ))}
@@ -757,7 +758,7 @@ const AboutUs = () => {
                         {testimonial.time}
                       </p>
                       <div className="flex items-center mt-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                        <div className="w-2 h-2 bg-soydeli-primary rounded-full mr-1"></div>
                         <span className="text-xs text-green-600 font-medium">
                           Verified
                         </span>
@@ -775,7 +776,7 @@ const AboutUs = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex text-yellow-500 mb-4">
+                <div className="flex text-soydeli-primary mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <FaStar key={i} className="text-sm" />
                   ))}
@@ -798,7 +799,7 @@ const AboutUs = () => {
                         {testimonial.time}
                       </p>
                       <div className="flex items-center mt-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                        <div className="w-2 h-2 bg-soydeli-primary rounded-full mr-1"></div>
                         <span className="text-xs text-green-600 font-medium">
                           Verified
                         </span>
@@ -811,8 +812,8 @@ const AboutUs = () => {
           </motion.div>
 
           {/* Desktop Gradient Overlays */}
-          <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-emerald-50 to-transparent pointer-events-none z-10"></div>
-          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-emerald-50 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-soydeli-surface to-transparent pointer-events-none z-10"></div>
+          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-soydeli-surface to-transparent pointer-events-none z-10"></div>
         </div>
 
         {/* Mobile Navigation Arrows */}
@@ -875,7 +876,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.3 }}
                 className="w-full bg-white rounded-2xl shadow-[0_8px_30px_rgba(75,125,28,0.08)] border border-[#EEF4E6] p-6 mx-auto"
               >
-                <div className="flex text-yellow-500 mb-4">
+                <div className="flex text-soydeli-primary mb-4">
                   {[...Array(testimonials[currentTestimonialIndex].rating)].map(
                     (_, i) => (
                       <FaStar key={i} className="text-sm" />
@@ -900,7 +901,7 @@ const AboutUs = () => {
                         {testimonials[currentTestimonialIndex].time}
                       </p>
                       <div className="flex items-center mt-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                        <div className="w-2 h-2 bg-soydeli-primary rounded-full mr-1"></div>
                         <span className="text-xs text-green-600 font-medium">
                           Verified
                         </span>

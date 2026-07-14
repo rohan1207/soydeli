@@ -16,6 +16,7 @@ import Checkout from './pages/Checkout';
 import LandingPage from './pages/LandingPage';
 import Subscription from './pages/Subscription';
 import Recipes from './pages/Recipes';
+import RecipeDetail from './pages/RecipeDetail';
 import ProductDetail from './pages/ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -35,9 +36,11 @@ function AppContent() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/menu" element={<OurMenu />} />
+        <Route path="/shop" element={<OurMenu />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes/:slug" element={<RecipeDetail />} />
         <Route path="/offers" element={<OffersPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/account" element={<Account />} />

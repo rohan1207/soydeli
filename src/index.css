@@ -1,4 +1,109 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .page-shell {
+    @apply min-h-screen bg-soydeli-page pt-24 sm:pt-28 pb-16 px-4 sm:px-6;
+  }
+
+  .section-wrap {
+    @apply py-16 sm:py-20 lg:py-24 px-4 sm:px-6;
+  }
+
+  .section-page {
+    @apply section-wrap bg-soydeli-page;
+  }
+
+  .section-white {
+    @apply section-wrap bg-white;
+  }
+
+  .section-surface {
+    @apply section-wrap bg-soydeli-surface;
+  }
+
+  .eyebrow {
+    @apply text-soydeli-lime font-semibold tracking-[0.25em] text-xs sm:text-sm mb-3 uppercase;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight;
+  }
+
+  .section-desc {
+    @apply text-gray-600 text-sm sm:text-base leading-relaxed;
+  }
+
+  .card-soydeli {
+    @apply bg-white rounded-2xl sm:rounded-3xl border border-soydeli-border shadow-soydeli transition-all duration-300;
+  }
+
+  .card-soydeli-hover {
+    @apply hover:shadow-soydeli-lg hover:border-soydeli-border-hover;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-soydeli-primary hover:bg-soydeli-dark active:bg-soydeli-dark text-white px-6 sm:px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-soydeli-primary text-soydeli-dark hover:bg-soydeli-surface px-6 sm:px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-300 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply text-sm font-semibold uppercase tracking-wider text-soydeli-dark hover:text-soydeli-primary transition-colors duration-300;
+  }
+
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border border-white/40 text-white text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] hover:bg-white/10 transition-all duration-300 active:scale-[0.98];
+  }
+
+  .btn-icon {
+    @apply w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-soydeli-border text-soydeli-dark flex items-center justify-center transition-all duration-300 shadow-soydeli hover:shadow-soydeli-lg hover:border-soydeli-border-hover active:scale-95;
+  }
+
+  .cta-band {
+    @apply bg-gradient-to-r from-soydeli-primary to-soydeli-dark p-8 sm:p-10 rounded-2xl sm:rounded-3xl shadow-soydeli-lg text-white;
+  }
+
+  .cta-band :where(h1, h2, h3, h4, h5, h6, .section-title) {
+    @apply text-white;
+  }
+
+  .theme-band {
+    @apply bg-gradient-to-r from-soydeli-primary to-soydeli-dark text-white;
+  }
+
+  .theme-band :where(h1, h2, h3, h4, h5, h6, .section-title) {
+    @apply text-white;
+  }
+
+  .section-title-light {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight;
+  }
+
+  .input-soydeli {
+    @apply w-full px-4 py-3 bg-soydeli-surface border-2 border-soydeli-border text-gray-900 placeholder-gray-400 focus:outline-none focus:border-soydeli-primary transition-colors rounded-xl;
+  }
+
+  .icon-circle {
+    @apply w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-soydeli-primary to-soydeli-dark rounded-full flex items-center justify-center text-white shadow-md;
+  }
+
+  .nav-link {
+    @apply uppercase font-bold tracking-[0.2em] text-sm transition-colors duration-300 text-gray-900 hover:text-soydeli-primary;
+  }
+
+  .filter-pill {
+    @apply capitalize text-sm sm:text-base font-medium transition-all duration-300 px-4 py-2 rounded-full;
+  }
+
+  .filter-pill-active {
+    @apply filter-pill bg-soydeli-primary text-white shadow-md;
+  }
+
+  .filter-pill-inactive {
+    @apply filter-pill text-gray-600 bg-soydeli-surface hover:bg-soydeli-border hover:text-gray-900;
+  }
+}

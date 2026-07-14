@@ -13,7 +13,7 @@ const Account = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-6 sm:py-12 pt-24 sm:pt-32 px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <div className="container mx-auto">
         {user ? (
           <AccountDashboard />

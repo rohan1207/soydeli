@@ -18,7 +18,6 @@ import {
   UtensilsCrossed,
   ChefHat,
 } from "lucide-react";
-import AddToCartButton from "./AddToCartButton";
 import ProductDetailPopup from "./ProductDetailPopup";
 
 const categoryIcons = {
@@ -63,14 +62,6 @@ const MenuItem = ({ item, onSelect }) => (
           {item.name}
         </h3>
         <div className="hidden sm:block flex-grow mx-4 border-b-2 border-dotted border-gray-300"></div>
-        <div className="flex items-baseline">
-          <p className="font-bold text-gray-800 text-lg">
-            ₹{item.discountedPrice}
-          </p>
-          <p className="font-light text-gray-500 text-sm line-through ml-2">
-            ₹{item.mrp}
-          </p>
-        </div>
       </div>
       <p className="text-gray-600 text-sm leading-relaxed mb-2">
         {item.description}
@@ -83,17 +74,16 @@ const MenuItem = ({ item, onSelect }) => (
         <span className="hidden sm:inline">•</span>
         <span>Serves {item.serves}</span>
       </div>
-      <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:gap-0 sm:justify-between items-stretch sm:items-center">
+      <div className="mt-4">
         <button
           onClick={(e) => {
             e.stopPropagation();
             onSelect(item);
           }}
-          className="text-sm font-semibold text-soydeli-gold hover:text-soydeli-gold-dark transition-colors"
+          className="text-sm font-semibold uppercase tracking-wider text-[#4B7A2F] hover:text-[#6AAF48] transition-colors"
         >
-          View Details
+          Read More
         </button>
-        <AddToCartButton item={item} />
       </div>
     </div>
   </motion.div>
@@ -107,7 +97,7 @@ const FullMenu = () => {
 
   const [activeCategory, setActiveCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("rating"); // rating, price-lh, price-hl, serves
+  const [sortBy, setSortBy] = useState("rating"); // rating, serves
 
   useEffect(() => {
     const fetchMenuData = async () => {
@@ -153,10 +143,6 @@ const FullMenu = () => {
 
     const sortedItems = [...items].sort((a, b) => {
       switch (sortBy) {
-        case "price-lh":
-          return a.discountedPrice - b.discountedPrice;
-        case "price-hl":
-          return b.discountedPrice - a.discountedPrice;
         case "serves":
           return a.serves - b.serves;
         case "rating":
@@ -170,7 +156,7 @@ const FullMenu = () => {
 
   if (loading) {
     return (
-      <section className="bg-gray-50 py-20 px-4 sm:px-8 min-h-screen flex items-center justify-center">
+      <section className="section-page min-h-screen flex items-center justify-center">
         <p className="text-2xl font-semibold text-gray-700">Loading menu...</p>
       </section>
     );
@@ -178,14 +164,14 @@ const FullMenu = () => {
 
   if (error) {
     return (
-      <section className="bg-gray-50 py-20 px-4 sm:px-8 min-h-screen flex items-center justify-center">
+      <section className="section-page min-h-screen flex items-center justify-center">
         <p className="text-2xl font-semibold text-red-600">Error: {error}</p>
       </section>
     );
   }
 
   return (
-    <section className="bg-gray-50 py-20 px-4 sm:px-8 overflow-hidden min-h-screen">
+    <section className="section-page overflow-hidden min-h-screen">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -266,7 +252,7 @@ const FullMenu = () => {
               id="sort-dropdown"
               className="hidden absolute top-full mt-2 w-full bg-white rounded-md shadow-xl border border-gray-100 z-20 overflow-hidden"
             >
-              {["rating", "price-lh", "price-hl", "serves"].map((option) => (
+              {["rating", "serves"].map((option) => (
                 <button
                   key={option}
                   onClick={() => {

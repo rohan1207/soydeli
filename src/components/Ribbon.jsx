@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const words = ["High Protein", "100% Vegan", "No Preservatives", "Made in Kolhapur"];
+const words = ["High Protein", "100% Vegan", "No Preservatives", "Pan India"];
 
 const Ribbon = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -37,7 +37,7 @@ const Ribbon = () => {
       }`}
       style={
         isOutlined
-          ? { WebkitTextStroke: isSmallScreen ? "1px #b45309" : "2px #b45309" }
+          ? { WebkitTextStroke: isSmallScreen ? "1px #4B7A2F" : "2px #4B7A2F" }
           : {}
       }
     >
@@ -46,7 +46,7 @@ const Ribbon = () => {
   );
 
   return (
-    <section className="py-8 sm:py-10 lg:py-12 bg-[#F3F4F6] overflow-hidden">
+    <section className="section-surface py-8 sm:py-10 lg:py-12 overflow-hidden">
       <motion.div className="flex" variants={marqueeVariants} animate="animate">
         <div className="flex">
           {[...words, ...words].map((word, index) => (

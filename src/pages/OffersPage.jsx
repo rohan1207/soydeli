@@ -5,21 +5,21 @@ import { motion, AnimatePresence } from "framer-motion";
 const offers = [
 	{
 		id: 1,
-		title: "Daily Subscription",
-		subtitle: "Fresh Tofu Delivered Daily",
-		description: "Subscribe and get fresh tofu delivered to your doorstep every day with exclusive savings.",
+		title: "Daily Fresh Packs",
+		subtitle: "Find fresh tofu at stores near you",
+		description: "Pick up fresh Soydeli Tofu from your nearest retail store with exclusive in-store offers.",
 		discount: "Save 20%",
 		icon: <FaLeaf className="text-3xl text-[#6AAF48]" />,
-		color: "from-[#E6F4EA] to-[#C3E9C3]",
+		color: "from-soydeli-surface to-soydeli-mint",
 		features: [
-			"Pause or skip anytime",
-			"Priority delivery",
-			"Exclusive subscriber perks",
-			"Eco-friendly packaging",
+			"Available at retail stores",
+			"Chilled supply chain",
+			"Fresh 200g packs",
+			"Pan India availability",
 		],
 		validUntil: "Ongoing",
 		minOrder: "No minimum",
-		ctaText: "Start Subscription",
+		ctaText: "Find a Store",
 	},
 	{
 		id: 2,
@@ -28,7 +28,7 @@ const offers = [
 		description: "Invite friends to Soydeli Tofu and both get discounts on your next order.",
 		discount: "₹100 OFF Each",
 		icon: <FaUserFriends className="text-3xl text-[#6AAF48]" />,
-		color: "from-[#F4EAD7] to-[#C3E9C3]",
+		color: "from-soydeli-surface to-soydeli-light",
 		features: [
 			"Easy referral link",
 			"Stackable with other offers",
@@ -46,7 +46,7 @@ const offers = [
 		description: "Order in bulk for parties, events, or meal prep and unlock special pricing.",
 		discount: "Up to 30% OFF",
 		icon: <FaBoxOpen className="text-3xl text-[#6AAF48]" />,
-		color: "from-[#C3E9C3] to-[#F4EAD7]",
+		color: "from-soydeli-mint/50 to-soydeli-surface",
 		features: [
 			"Custom bulk packs",
 			"Free shipping over ₹2000",
@@ -64,7 +64,7 @@ const offers = [
 		description: "Get a special discount on your very first order. Taste the difference!",
 		discount: "15% OFF",
 		icon: <FaGift className="text-3xl text-[#6AAF48]" />,
-		color: "from-[#6AAF48] to-[#E6F4EA]",
+		color: "from-soydeli-primary/20 to-soydeli-surface",
 		features: [
 			"No code needed",
 			"Valid for new users",
@@ -82,7 +82,7 @@ const offers = [
 		description: "Collect points with every purchase and redeem for discounts or free products.",
 		discount: "Earn Points",
 		icon: <FaRegStar className="text-3xl text-[#6AAF48]" />,
-		color: "from-[#C3E9C3] to-[#6AAF48]",
+		color: "from-soydeli-surface to-soydeli-primary/30",
 		features: [
 			"Redeem for free tofu",
 			"Birthday bonus points",
@@ -127,7 +127,7 @@ const OffersPage = () => {
 	};
 
 	return (
-		<div className="relative bg-gradient-to-br from-[#E6F4EA] to-[#F4EAD7] py-12 px-4 sm:px-8 min-h-screen flex flex-col items-center justify-center">
+		<div className="page-shell flex flex-col items-center justify-center">
 			<div className="max-w-5xl w-full mx-auto">
 				{/* Header */}
 				<motion.div
@@ -136,10 +136,9 @@ const OffersPage = () => {
 					transition={{ duration: 0.6 }}
 					className="text-center mb-12 mt-14"
 				>
-					<h2 className="text-4xl sm:text-5xl font-extrabold text-[#4B7A2F] mb-3 tracking-tight">
-						Exclusive Offers
-					</h2>
-					<p className="text-lg sm:text-xl text-[#6AAF48] max-w-2xl mx-auto">
+					<p className="eyebrow">Special Deals</p>
+					<h2 className="section-title mb-3">Exclusive Offers</h2>
+					<p className="section-desc max-w-2xl mx-auto text-lg sm:text-xl">
 						Save more, eat better, and enjoy fresh tofu every day!
 					</p>
 				</motion.div>
@@ -149,7 +148,7 @@ const OffersPage = () => {
 					{/* Navigation Buttons */}
 					<button
 						onClick={handlePrev}
-						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 bg-white hover:bg-[#6AAF48] text-[#6AAF48] hover:text-white p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 group"
+						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 btn-icon hover:bg-soydeli-primary hover:text-white hover:border-soydeli-primary"
 						aria-label="Previous offer"
 					>
 						<FaChevronLeft className="text-xl" />
@@ -157,7 +156,7 @@ const OffersPage = () => {
 
 					<button
 						onClick={handleNext}
-						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 bg-white hover:bg-[#6AAF48] text-[#6AAF48] hover:text-white p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 group"
+						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 btn-icon hover:bg-soydeli-primary hover:text-white hover:border-soydeli-primary"
 						aria-label="Next offer"
 					>
 						<FaChevronRight className="text-xl" />
@@ -181,10 +180,10 @@ const OffersPage = () => {
 
 								{/* Content */}
 								<div className="flex-1 text-center sm:text-left">
-									<h3 className="text-3xl sm:text-4xl font-bold text-[#4B7A2F] mb-2">
+									<h3 className="text-3xl sm:text-4xl font-bold text-soydeli-dark mb-2">
 										{offers[currentIndex].title}
 									</h3>
-									<p className="text-base sm:text-lg text-[#6AAF48] font-semibold mb-3">
+									<p className="text-base sm:text-lg text-soydeli-primary font-semibold mb-3">
 										{offers[currentIndex].subtitle}
 									</p>
 									<p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed">
@@ -196,7 +195,7 @@ const OffersPage = () => {
 										{offers[currentIndex].features.map((feature, i) => (
 											<span
 												key={i}
-												className="bg-white/80 text-[#4B7A2F] px-3 py-1.5 rounded-full text-xs font-medium shadow-sm"
+												className="bg-white/80 text-soydeli-dark px-3 py-1.5 rounded-full text-xs font-medium shadow-sm"
 											>
 												{feature}
 											</span>
@@ -205,7 +204,7 @@ const OffersPage = () => {
 
 									{/* Discount & Details */}
 									<div className="flex flex-wrap items-center gap-3 mb-5 justify-center sm:justify-start">
-										<span className="bg-[#6AAF48] text-white px-5 py-2.5 rounded-full font-bold text-base shadow-md">
+										<span className="bg-soydeli-primary text-white px-5 py-2.5 rounded-full font-bold text-base shadow-md">
 											{offers[currentIndex].discount}
 										</span>
 										<div className="flex flex-col text-xs text-gray-600">
@@ -217,7 +216,7 @@ const OffersPage = () => {
 									{/* CTA Button */}
 									<button
 										onClick={() => handleClaimOffer(offers[currentIndex])}
-										className="bg-[#4B7A2F] hover:bg-[#3d6325] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+										className="btn-primary"
 									>
 										{offers[currentIndex].ctaText} →
 									</button>
@@ -235,8 +234,8 @@ const OffersPage = () => {
 							onClick={() => handleDotClick(index)}
 							className={`h-3 rounded-full transition-all duration-300 ${
 								index === currentIndex
-									? "w-8 bg-[#6AAF48]"
-									: "w-3 bg-[#C3E9C3] hover:bg-[#6AAF48]/50"
+									? "w-8 bg-soydeli-primary"
+									: "w-3 bg-soydeli-mint hover:bg-soydeli-primary/50"
 							}`}
 							aria-label={`Go to offer ${index + 1}`}
 						/>
